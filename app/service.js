@@ -23,10 +23,7 @@ export const getcontentListing = async (keyword, page) => {
 export const getContentDetail = async (contentRef) => {
 	const contentDetailUrl = `${API_URL}${contentRef}.json`
 	const { title, description, subjects, authors, covers } = await fetch(contentDetailUrl).then(res => res.json())
-	const authorDetails = {
-		name: '-',
-		bio: 'Not Provided'
-	}
+	const authorDetails = {}
 
 	if (authors) {
 		const authorDetailUrl = `${API_URL}${authors[0].author.key}.json`
@@ -38,9 +35,9 @@ export const getContentDetail = async (contentRef) => {
 
 	const coverSrc = covers ? `${COVER_API_URL}/b/id/${covers[0]}.jpg` : COVER_IMG_FALLBACK
 	const getDescription = description ? (description.value ?? description) : null
-	const descriptionContent = getDescription ?? authorDetails.bio
+	const descriptionContent = getDescription ?? authorDetails.bio ?? 'No Description Provided'
 	const subjectList = subjects ?? []
-	const authorName = authorDetails.name
+	const authorName = authorDetails.name ??'-'
 
 	return { title, authorName, descriptionContent, coverSrc, subjectList }
 }
