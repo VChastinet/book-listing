@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<script type="module" src="index.js" defer></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Listing app</title>
+</head>
+
+<body>
+	<main class="max-w-3xl h-screen p-6 mx-auto flex flex-col gap-y-6">
+		<h1 class="text-4xl font-bold text-center">content listing</h1>
+		<form id="search-form" class="flex justify-center gap-x-2.5">
+			<input type="text" name="contentSearch" placeholder="Search contents" class="border border-slate-300 rounded grow p-1" />
+			<button type="submit" class="bg-sky-500 hover:bg-sky-400 active:bg-sky-500 rounded w-16 text-white font-bold">ok</button>
+		</form>
+		<div class="flex justify-between text-4xl">
+			<button disabled id="prev-button" class="hover:opacity-80 active:opacity-100 disabled:opacity-20">⬅️</button>
+			<button disabled id="next-button" class="hover:opacity-80 active:opacity-100 disabled:opacity-20" >➡️</button>
+		</div>
+		<section id="content-list" class="flex flex-wrap justify-center gap-3 h-[50rem] overflow-x-auto">
+		</section>
+	</main>
+
+	<span id="loader" class="animate-bounce hidden">🧠</span>
+
+	<dialog class="loading w-1/2 h-4/5 mb-0 rounded-t-xl transition-transform translate-y-full">
+		<button onclick="this.closest('dialog').classList.add('translate-y-full'); this.closest('dialog').close()">✖️</button>
+		<div id="content-details">
+			<img />
+			<h2></h2>
+			<p></p>
+			<ul></ul>
+			<q></q>
+		</div>
+		<span class="animate-ping hidden">📖</span>
+	</dialog>
+</body>
+</html>

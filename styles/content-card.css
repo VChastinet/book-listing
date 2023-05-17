@@ -1,0 +1,42 @@
+.content-card {
+    display: flex;
+    column-gap: 10px;
+    border: 1px solid;
+    border-color: #cbd5e1;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    align-items: center;
+    background-color: #ffffff;
+    width: 345px;
+    height: 90px;
+    overflow: hidden;
+  }
+  
+  .content-card:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 0.1s;
+  }
+  
+  .content-card > img {
+    width: 60px;
+    aspect-ratio: 2 / 3;
+  }
+  
+  .content-card > div {
+    overflow: inherit;
+    margin-inline-end: 15px;
+  }
+  
+  .content-card > div > p {
+    overflow: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  
+  .content-card > div > span {
+    font-size: 14px;
+    color: #a8a8a8;
+  }
+  
