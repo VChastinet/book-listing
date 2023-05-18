@@ -1,16 +1,15 @@
-import { contentUrlParans } from "./constants.js"
+import { SEARCH_PARAMS } from "./constants.js"
 
 const contentCardTemplate = (title, author, cover) => {
 	const contentCardContainer = document.createElement('div')
 	contentCardContainer.classList.add('content-card')
 
 	contentCardContainer.innerHTML = `
-	<img src="${cover}" alt="content cover image">
+	<img src="${cover}" alt="content cover image" />
 	<div>
 		<p>${title}</p>
 		<span>${author}</span>
 	</div>
-</div>
 `
 
 	return contentCardContainer
@@ -55,12 +54,13 @@ export const updateContentListing = (contentList) => {
 		const contentCard = contentCardTemplate(title, authorName, coverSrc)
 
 		contentCard.addEventListener('click', () => {
-			contentDetail.dispatchEvent(new CustomEvent('modalOpen', { detail: contentRef }))
+			const openModalEvent = new CustomEvent('modalOpen', { detail: contentRef })
+			contentDetail.dispatchEvent(openModalEvent)
 		})
 
 		contentListing.insertAdjacentElement('beforeend', contentCard)
 	})
 
-	nextButton.toggleAttribute('disabled', contentList.length < contentUrlParans.limit);
-	prevButton.toggleAttribute('disabled', !contentUrlParans.page);
+	nextButton.toggleAttribute('disabled', contentList.length < SEARCH_PARAMS.limit);
+	prevButton.toggleAttribute('disabled', !SEARCH_PARAMS.page);
 }

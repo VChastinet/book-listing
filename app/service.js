@@ -1,7 +1,7 @@
-import { API_URL, COVER_API_URL, COVER_IMG_FALLBACK, contentUrlParans } from "./constants.js"
+import { API_URL, COVER_API_URL, COVER_IMG_FALLBACK, SEARCH_PARAMS } from "./constants.js"
 
-export const getcontentListing = async (keyword, page) => {
-	const contentListUrl = `${API_URL}/search.json?q=${keyword}&limit=${contentUrlParans.limit}&offset=${page}`
+export const getContentListing = async (keyword, page) => {
+	const contentListUrl = `${API_URL}/search.json?q=${keyword}&limit=${SEARCH_PARAMS.limit}&offset=${page}`
 	const { docs } = await fetch(contentListUrl).then(res => res.json())
 
 	const contentList = docs.map(content => {
